@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// Manage -h and --help CLI options
-	if len(os.Args) > 1 && (os.Args[1] == "-h") || os.Args[1] == "--help" {
+	if len(os.Args) > 1 && (os.Args[1] == "-h" || os.Args[1] == "--help") {
 		printHelp()
 	}
 
