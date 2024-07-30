@@ -43,10 +43,13 @@ func main() {
 				return
 			}
 		}
-		_, errs = file.WriteString(fmt.Sprintf("%s\n", formatEvent(ev)))
-		if errs != nil {
-			fmt.Println("Failed to write to logs.txt: ", errs)
-			return
+
+		if len(os.Args) <= 1 || os.Args[1] != "-s" {
+			_, errs = file.WriteString(fmt.Sprintf("%s\n", formatEvent(ev)))
+			if errs != nil {
+				fmt.Println("Failed to write to logs.txt: ", errs)
+				return
+			}
 		}
 	}
 }
@@ -239,11 +242,11 @@ func keyName(ev hook.Event) string {
 func mouseButtonName(button uint16) string {
 	switch button {
 	case 1:
-		return "left"
+		return "[left click]"
 	case 2:
-		return "middle"
+		return "[middle click]"
 	case 3:
-		return "right"
+		return "[right click]"
 	default:
 		return fmt.Sprintf("button: %d", button)
 	}
