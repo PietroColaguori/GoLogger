@@ -53,11 +53,17 @@ func formatEvent(ev hook.Event) string {
 			timestamp := fmt.Sprintf("%d:%d:%d - %d/%d/%d", time.Now().Hour(), time.Now().Minute(), time.Now().Second(), time.Now().Day(), time.Now().Month(), time.Now().Year())
 			return fmt.Sprintf("%s [%s]\n", keyName(ev), timestamp)
 		}
+		if len(os.Args) > 1 && os.Args[1] == "-a" {
+			return fmt.Sprint(keyName_plain(ev))
+		}
 		return fmt.Sprint(keyName(ev))
 	case hook.MouseDown:
 		if len(os.Args) > 1 && os.Args[1] == "-t" {
 			timestamp := fmt.Sprintf("%d:%d:%d - %d/%d/%d", time.Now().Hour(), time.Now().Minute(), time.Now().Second(), time.Now().Day(), time.Now().Month(), time.Now().Year())
 			return fmt.Sprintf("%s [%s]\n", mouseButtonName(ev.Button), timestamp)
+		}
+		if len(os.Args) > 1 && os.Args[1] == "-a" {
+			return ""
 		}
 		return fmt.Sprint(mouseButtonName(ev.Button))
 	default:
@@ -232,6 +238,20 @@ func keyName(ev hook.Event) string {
 	return fmt.Sprintf("Unknown key (raw code %d, key char %d)", ev.Rawcode, ev.Keychar)
 }
 
+func keyName_plain(ev hook.Event) string {
+	if ev.Keychar > 32 && ev.Keychar <= 127 {
+		return string(ev.Keychar)
+	}
+	switch ev.Keychar {
+	case 13:
+		return "\n"
+	case 32:
+		return " "
+
+	}
+	return ""
+}
+
 // identify mouse button
 func mouseButtonName(button uint16) string {
 	switch button {
@@ -249,5 +269,6 @@ func mouseButtonName(button uint16) string {
 func printHelp() {
 	fmt.Println("-t: display the timestamps")
 	fmt.Println("-h, --help: display this help dialog")
+	fmt.Println("-a: use to generate input for scanner.go")
 	os.Exit(0)
 }
