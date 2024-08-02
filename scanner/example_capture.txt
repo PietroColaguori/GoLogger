@@ -1,0 +1,19 @@
+Here are some credentials I've been using:
+
+- Facebook: username fb_user_123 and password fb_pass_456
+- Gmail: username gmail_user_789 and password gmail_pwd_012
+- Twitter: username @twitter_user and password tw_pass_345
+- SSH: username ssh_user and password ssh_pass_678
+- FTP: username ftp_user and password ftp_pass_901
+- Amazon: email amazon_user@example.com and password amazon123
+- Shopify: email shopify_user@example.com and password shopify_pass_234
+- GitHub: username github_user and access token gh_token_567
+- PayPal: email paypal_user@example.com and password pay_pass_890
+- AWS: access key ID AKIAIOSFODNN7EXAMPLE and secret access key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+- Docker: username docker_user and password docker_pass_345
+- Kubernetes: token kubernetes_token_678
+- MySQL: username mysql_user and password mysql_pass_901
+- Slack: token slack_token_234
+- Zoom: email zoom_user@example.com and password zoom_pass_567
+- Netflix: username netflix_user and password netflix_pass_890
+ 
